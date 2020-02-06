@@ -1,6 +1,6 @@
 <?php
 
-class turn_model {
+class Turn extends EntidadBase{
 
     private $ID
     private $coupons;
@@ -11,6 +11,16 @@ class turn_model {
     public function __construct(){
         $table="turno";
         parent::__construct($table);
+    }
+
+    public function __construct($ID, $coupons, $full, $hour, $date){
+        $table="turno";
+        parent::__construct($table);
+        $this->ID= $ID;
+        $this->coupons= $coupons;
+        $this->full= $full;
+        $this->hour= $hour;
+        $this->date= $date;
     }
 
     public function getID(){
