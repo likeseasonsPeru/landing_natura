@@ -15,8 +15,6 @@ class User extends EntidadBase{
         parent::__construct($table);
     }
 
-    
-
     public function getDNI(){
         return $this->dni;
     }

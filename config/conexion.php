@@ -22,7 +22,7 @@ class Conexion {
             $conn = new PDO('mysql:host='.$this->db_host.';dbname='.$this->db_name,$this->db_username);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             if ($conn){
-                echo 'DB connected';
+               // echo 'DB connected';
             }
             return $conn;
         }

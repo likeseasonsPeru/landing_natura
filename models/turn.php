@@ -2,7 +2,7 @@
 
 class Turn extends EntidadBase{
 
-    private $ID
+    private $ID;
     private $coupons;
     private $full;
     private $hour;
@@ -13,7 +13,7 @@ class Turn extends EntidadBase{
         parent::__construct($table);
     }
 
-    public function __construct($ID, $coupons, $full, $hour, $date){
+   /* public function __construct($ID, $coupons, $full, $hour, $date){
         $table="turno";
         parent::__construct($table);
         $this->ID= $ID;
@@ -21,7 +21,7 @@ class Turn extends EntidadBase{
         $this->full= $full;
         $this->hour= $hour;
         $this->date= $date;
-    }
+    }*/
 
     public function getID(){
         return $this->ID;

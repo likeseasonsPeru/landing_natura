@@ -37,8 +37,8 @@ class EntidadBase extends Conexion{
 
     // Update one by ...
 
-    public updateOne($column, $value, $columnCon, $valueCon){
-        $query=$this->db->query("UPDATE $this->table SET $column='$value' WHERE $columnCon = $valueCon");
+    public function updateOne($column, $value, $columnCon, $valueCon){
+        $query=$this->db->query("UPDATE $this->table SET $column='$value' WHERE $columnCon = '$valueCon'");
     }
 
     public function ejecutarSql($query){
