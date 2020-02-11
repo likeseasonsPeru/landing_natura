@@ -2,29 +2,19 @@
 
 require_once '../models/user.php';
 
-$dni = '';
-$dni = $_POST['dni'];
+$cod = '7132744';
+//$cod = $_POST['cod'];
 
-if($dni != null && $dni != ''){
+if($cod != null && $cod != ''){
 
   // Se recupera el user mediante dni
     $user = new User();
-    $userfounded = $user->getBy('DNI', $dni);
-
-    if ($userfounded != null){
-        echo 'Hay un usuario';
-    /*  user->setDNI($userfounded[0]['DNI']);
-        user->setName($userfounded[0]['Nombre']);
-        user->setEmail($userfounded[0]['Email']);
-        user->setTurno($userfounded[0]['Turno_ID']);  */
-        //user->setRegistered(1);
-
-        // Se actualiza (registra al usuario);
-
-        $user->updateOne('Registered', 1, "DNI", $dni);
-        echo 'Se registro correctamente al usuario invitado';
+    $userfounded = $user->getByOrBy('usuario_dni', 'usuario_cod_cn',$cod);
+    if ($userfounded[0]){
+        //  send
+        //  cod = ....
     }else {
-        echo 'No se encuentra en la lista';
+      // send cod = null;
     }
 }
 
@@ -34,7 +24,7 @@ if($dni != null && $dni != ''){
 
 <div class="">
   <div class="">
-    <span> <?= $user->getName(); ?></span> 
+    <span> <?= $user->getName(); ?></span>
     <br> Bienvenido <br>
 
     <input type="submit" class="logbtn" id="Continuar" value="Continuar" style="display: block;
@@ -47,7 +37,7 @@ if($dni != null && $dni != ''){
               outline: none;
               cursor: pointer;
               transition: .5s;">
-    <input id="dni" type="hidden" name="dni" value="<?= $dni; ?>">
+    <input id="dni" type="hidden" name="dni" value="<?= $cod; ?>">
   </div>
 </div>
 

@@ -35,6 +35,16 @@ class EntidadBase extends Conexion{
         }
     }
 
+    public function getByOrBy($column1,$column2,$value){
+        $query=$this->db->query("SELECT * FROM $this->table WHERE $column1='$value' OR $column2='$value'");
+        if ($query == true){
+            $resultSet[]=$query->fetch(PDO::FETCH_ASSOC);
+            return $resultSet;
+        }else {
+            return null;
+        }
+    }
+
     // Update one by ...
 
     public function updateOne($column, $value, $columnCon, $valueCon){

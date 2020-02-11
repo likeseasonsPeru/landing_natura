@@ -4,14 +4,14 @@ require_once '../models/user.php';
 require_once '../models/turn.php';
 
 // para test
-$dni = '71327644';
+$cod = '71327644';
 //$dni = $_POST['dni'];
 
-if($dni != null && $dni != ''){
+if($cod != null && $cod != ''){
 
   // Se recupera el user mediante dni
-  $user = new User();
-  $userfounded = $user->getBy('DNI', $dni);
+ // $user = new User();
+ // $userfounded = $user->getByOrBy('usuario_dni', 'usuario_cod_cn',$cod);
 
   // Se obtienen los turno con sus datos
   $turn = new Turn();
@@ -19,7 +19,6 @@ if($dni != null && $dni != ''){
  // $turns = $turn->ejecutarSql(query);
   $turns = $turn->getAll();
 
-  
   // el Primero obtenido es el turno por defecto ("turno0 que indica sin turno")
 
   $turn1 = $turns[0][1];
@@ -32,37 +31,29 @@ if($dni != null && $dni != ''){
 
   // Se asigna un valor a al boton de cada
 
-  if ($turn1['Full'] == 0){
+  if ($turn1['usuario_full'] == 0){
     $btnTurno1 = 'Elegir Turno';
   }else {
     $btnTurno1 = 'Ocupado';
   }
 
-  if ($turn2['Full'] == 0){
+  if ($turn2['usuario_full'] == 0){
     $btnTurno2 = 'Elegir Turno';
   }else {
     $btnTurno2 = 'Ocupado';
   }
 
-  if ($turn3['Full'] == 0){
+  if ($turn3['usuario_full'] == 0){
     $btnTurno3 = 'Elegir Turno';
   }else {
     $btnTurno3 = 'Ocupado';
   }
-  
-  $turnSelected = $userfounded[0]['Turno_ID'];
 
-  switch($turnSelected) {
-    case 'turno1':
-      $btnTurno1 = 'Seleccionado';
-      break;
-    case 'turno2':
-      $btnTurno2 = 'Seleccionado';
-      break;
-    case 'turno3':
-      $btnTurno3 = 'Seleccionado';
-      break;
-  }
+  //  enviar el
+
+  // id del turno
+  // cod
+
 }
 
 ?>
