@@ -32,21 +32,21 @@ if($btn != null && $btn != ''){
     // Se asigna un valor a al boton de cada
 
     if ($turn1['turno_full'] == 0){
-      $btnTurno1 = 'Elegir Turno';
+      $btnTurno1 = 'ELEGIR TURNO';
     }else {
-      $btnTurno1 = 'Ocupado';
+      $btnTurno1 = 'OCUPADO';
     }
 
     if ($turn2['turno_full'] == 0){
-      $btnTurno2 = 'Elegir Turno';
+      $btnTurno2 = 'ELEGIR TURNO';
     }else {
-      $btnTurno2 = 'Ocupado';
+      $btnTurno2 = 'OCUPADO';
     }
 
     if ($turn3['turno_full'] == 0){
-      $btnTurno3 = 'Elegir Turno';
+      $btnTurno3 = 'ELEGIR TURNO';
     }else {
-      $btnTurno3 = 'Ocupado';
+      $btnTurno3 = 'OCUPADO';
     }
 
     //  enviar el
@@ -90,7 +90,7 @@ if($btn != null && $btn != ''){
             </div>
             <div class="col-12 np text-center">
               <button class="selectButton" type="button" name="button">
-                ELEGIR TURNO
+                <?php echo $btnTurno1;?>
               </button>
             </div>
           </div>
@@ -114,7 +114,7 @@ if($btn != null && $btn != ''){
             </div>
             <div class="col-12 np text-center">
               <button class="selectButton" type="button" name="button">
-                ELEGIR TURNO
+              <?php echo $btnTurno2;?>
               </button>
             </div>
           </div>
@@ -138,7 +138,7 @@ if($btn != null && $btn != ''){
             </div>
             <div class="col-12 np text-center">
               <button class="selectButton" type="button" name="button">
-                ELEGIR TURNO
+                <?php echo $btnTurno3;?>
               </button>
             </div>
           </div>

@@ -43,7 +43,7 @@ if($cod != null && $cod != '' && $email!= null && $email != '' && $turnid != nul
 <div class="fondoForms col-12 np">
   <div class="col-12 text-center topTitle">
     <h1>
-      Muchas gracias {{Nombre}},
+      Muchas gracias <?php echo $name;?>,
     </h1>
     <div class="col-12 col-md-8 offset-md-2 text-center">
       <p class="textoRegistro">
