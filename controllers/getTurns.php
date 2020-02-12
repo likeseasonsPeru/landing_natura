@@ -4,7 +4,7 @@ require_once '../models/user.php';
 require_once '../models/turn.php';
 
 // para test
-$nombre = ''
+$nombre = '';
 $cod = '71327644';
 //$dni = $_POST['dni'];
 
@@ -32,29 +32,28 @@ if($cod != null && $cod != ''){
 
   // Se asigna un valor a al boton de cada
 
-  if ($turn1['usuario_full'] == 0){
+  if ($turn1['turno_full'] == 0){
     $btnTurno1 = 'Elegir Turno';
   }else {
     $btnTurno1 = 'Ocupado';
   }
 
-  if ($turn2['usuario_full'] == 0){
+  if ($turn2['turno_full'] == 0){
     $btnTurno2 = 'Elegir Turno';
   }else {
     $btnTurno2 = 'Ocupado';
   }
 
-  if ($turn3['usuario_full'] == 0){
+  if ($turn3['turno_full'] == 0){
     $btnTurno3 = 'Elegir Turno';
   }else {
     $btnTurno3 = 'Ocupado';
   }
 
   //  enviar el
-
   // id del turno
   // cod
-  // nombre 
+  // nombre
 
 }
 

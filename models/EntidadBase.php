@@ -24,7 +24,6 @@ class EntidadBase extends Conexion{
         }
         return $resultSet;
     }
-
     public function getBy($column,$value){
         $query=$this->db->query("SELECT * FROM $this->table WHERE $column='$value'");
         if ($query == true){
@@ -47,8 +46,12 @@ class EntidadBase extends Conexion{
 
     // Update one by ...
 
-    public function updateOne($column, $value, $columnCon, $valueCon){
+    public function updateBy($column, $value, $columnCon, $valueCon){
         $query=$this->db->query("UPDATE $this->table SET $column='$value' WHERE $columnCon = '$valueCon'");
+    }
+
+    public function updateByorBy($column, $value, $columnCon1, $columnCon2, $valueCon){
+        $query=$this->db->query("UPDATE $this->table SET $column='$value' WHERE $columnCon = '$valueCon' OR $columnCon2 = '$valueCon'");
     }
 
     public function ejecutarSql($query){

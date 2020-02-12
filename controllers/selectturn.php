@@ -3,9 +3,6 @@
 require_once '../models/user.php';
 require_once '../models/turn.php';
 
-
-$dni = '';
-$IDturn = '';
 $nombre = '';
 $dni = '71327644';
 $IDturn = 'turno2';
@@ -16,7 +13,7 @@ $IDturn = 'turno2';
 if($dni != null && $dni != '' && $IDturn!= null && $IDturn != ''){
 
     // Recuperando el usuario y el turno para las modificaciones 
-    $user = new User();
+   /* $user = new User();
     $turn = new Turn();
     $userfounded = $user->getBy('DNI', $dni);
     $turnfounded = $turn->getBy('ID', $IDturn);
@@ -31,7 +28,7 @@ if($dni != null && $dni != '' && $IDturn!= null && $IDturn != ''){
             $turn->updateOne('Full', 1, "ID", $IDturn);
         }
     }
-
+*/
     // variables con las que interactuara
 
 }

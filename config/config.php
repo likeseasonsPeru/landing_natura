@@ -5,10 +5,10 @@ define("SLASH", "/");
 define("SLASH_SUP", "../");
 
 /*Database Configuration*/
-define("HOST", "localhost");
-define("DB", "landing_natura");
-define("USER", "root");
-define("PASS", '');
+define("HOST", "likeseasons.com");
+define("DB", "eigbitco_natura");
+define("USER", "eigbitco_natura");
+define("PASS", 'M@:v3r!cK');
 
   $path = array(
       "controllers" => "controllers" . SLASH,
