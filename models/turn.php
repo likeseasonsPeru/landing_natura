@@ -9,7 +9,7 @@ class Turn extends EntidadBase{
     private $date;
 
     public function __construct(){
-        $table="turno";
+        $table="turnos";
         parent::__construct($table);
     }
 

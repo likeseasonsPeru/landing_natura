@@ -11,7 +11,7 @@ class User extends EntidadBase{
     private $registered;
 
     public function __construct(){
-        $table="usuario";
+        $table="usuarios";
         parent::__construct($table);
     }
 

@@ -2,7 +2,8 @@
 
 require_once '../models/user.php';
 
-$cod = '7132744';
+$cod = '';
+$cod = '71327644';
 //$cod = $_POST['cod'];
 
 if($cod != null && $cod != ''){
@@ -11,18 +12,15 @@ if($cod != null && $cod != ''){
     $user = new User();
     $userfounded = $user->getByOrBy('usuario_dni', 'usuario_cod_cn',$cod);
     if ($userfounded[0]){
-        //  send
+        $name = $userfounded[0]['usuario_nombre'];
+         //  send
         //  cod = ....
         // name = ........
-
-        $name = $userfounded[0]['usuario_nombre'];
     }else {
       // send cod = null;
     }
 
-    // show name 
-
-    
+    // show name
 
 }
 
