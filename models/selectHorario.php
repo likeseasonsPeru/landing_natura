@@ -8,10 +8,86 @@
         Selecciona el horario al cual quieres asistir
       </p>
     </div>
+    <div class="col-12">
+      <div class="row">
+        <div class="col-12 col-md-6 col-lg-4 col-xl-4 text-center">
+          <div class="backgroundTurno1 col-12 np">
+            <div class="col-12 np">
+              <p>
+                TURNO 1
+              </p>
+            </div>
+            <div class="col-12 np">
+              <p>
+                FECHA: Miércoles 26 de Febrero
+              </p>
+            </div>
+            <div class="col-12 np">
+              <p>
+                HORARIO: 10:00 am - 12:00pm
+              </p>
+            </div>
+            <div class="col-12 np text-center">
+              <button class="selectButton" type="button" name="button">
+                ELEGIR TURNO
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 col-xl-4 text-center">
+          <div class="backgroundTurno2 col-12 np">
+            <div class="col-12 np">
+              <p>
+                TURNO 2
+              </p>
+            </div>
+            <div class="col-12 np">
+              <p>
+                FECHA: Miércoles 26 de Febrero
+              </p>
+            </div>
+            <div class="col-12 np">
+              <p>
+                HORARIO: 3:00 pm - 5:00pm
+              </p>
+            </div>
+            <div class="col-12 np text-center">
+              <button class="selectButton" type="button" name="button">
+                ELEGIR TURNO
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-12 col-lg-4 col-xl-4 text-center">
+          <div class="backgroundTurno3 col-12 np">
+            <div class="col-12 np">
+              <p>
+                TURNO 3
+              </p>
+            </div>
+            <div class="col-12 np">
+              <p>
+                FECHA: Miércoles 26 de Febrero
+              </p>
+            </div>
+            <div class="col-12 np">
+              <p>
+                HORARIO: 6:00 pm - 8:00pm
+              </p>
+            </div>
+            <div class="col-12 np text-center">
+              <button class="selectButton" type="button" name="button">
+                ELEGIR TURNO
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <!--div class="lineHeader">
     </div-->
   </div>
-  <div class="col-12 col-sm-12 col-md-12 offset-md-0 col-lg-6 offset-lg-3 col-xl-6 offset-xl-3 posFormIngreso">
+  <div class="col-12 col-sm-12 col-md-12 offset-md-0 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2 posFormIngreso">
       <div class="row">
         <div class="col-12 col-md-6  spaceBtns">
           <button id="continuarSelect" class="btnFormulario" type="button" name="button" value="1">
@@ -47,8 +123,6 @@ $(document).ready(function() {
             document.getElementById("tituloHeader").style.textAlign = "right";
             $('.contenedor-datos').html(datahtml);
           }, 500)
-
-
         },error: function(){
           $('.contenedor-datos').html('<p>error al cargar desde Ajax</p>');
         }
