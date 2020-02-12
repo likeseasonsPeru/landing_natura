@@ -1,6 +1,8 @@
 <?php
 
-class User extends EntidadBase {
+require_once 'EntidadBase.php';
+
+class User extends EntidadBase{
 
     private $dni;
     private $name;
@@ -42,7 +44,7 @@ class User extends EntidadBase {
     }
 
     public function setEmail($email){
-        $this->email=$email
+        $this->email=$email;
     }
 
     public function getRegistered(){
@@ -52,7 +54,6 @@ class User extends EntidadBase {
     public function setRegistered($registered){
         $this->registered = $registered;
     }
-
     /*
     public function save(){
         $query="INSERT INTO usuarios (DNI,Nombre,Email,Registered,Turno_ID)
@@ -64,8 +65,8 @@ class User extends EntidadBase {
         $save=$this->db()->query($query);
         //$this->db()->error;
         return $save;
-    }
-    */
+    }  */
+
 
 }
 
