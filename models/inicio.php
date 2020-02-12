@@ -1,71 +1,44 @@
 
-<?php
-
-require_once '../classModels/user.php';
-
-
-$btn= '';
-$dni= '';
-$name= '';
-
-$cod = $_POST['dni'];
-
-  if($cod != null && $cod != ''){
-    $user = new User();
-    $userfounded = $user->getByOrBy('usuario_dni', 'usuario_cod_cn',$cod);
-    if ($userfounded[0]){
-       $name = $userfounded[0]['usuario_nombre'];
-    }else {
-
-    }
-  }
-
-?>
 
 <div class="fondoForms col-12 np">
   <div class="col-12 text-center topTitle np">
     <h1>
-      Bienvenido (a) <?php echo $name;?>, ten en cuenta los siguientes puntos antes de continuar
+      REGÍSTRATE
     </h1>
     <div class="col-12 col-md-8 offset-md-2 np">
       <p class="textoRegistro">
-        Solo puedes registrarte en un turno.<br>No podrás hacer cambios una vez que confirmes tu registro.<br>El evento tendrá un total de 3 turnos.
+        Para empezar, ingresa tu número de DNI o CODIGO DE CONSULTORA
       </p>
     </div>
     <!--div class="lineHeader">
     </div-->
   </div>
   <div class="col-12 col-sm-12 col-md-12 offset-md-0 col-lg-6 offset-lg-3 col-xl-6 offset-xl-3 posFormIngreso">
-      <div class="row">
-        <div class="col-12 col-md-6 spaceBtns ">
-          <button id="empezarBtn" class="btnFormulario" type="button" name="button" value="1">
-            EMPEZAR
-          </button>
-        </div>
-        <div class="col-12 col-md-6 spaceBtns">
-          <button id="cancelarBtn" class="btnFormulario" type="button" name="button" value="1">
-            CANCELAR
-          </button>
-        </div>
+    <form class="formDNI" method="post">
+      <input class="inputForm" placeholder="Ingrese su DNI o Código de Consult." type="text" name="dni" maxlength="8">
+      <div class="col-12 espaceBtnForm np text-center">
+        <button class="btnFormulario" type="button" name="button" value="1">
+          INGRESAR
+        </button>
       </div>
+    </form>
   </div>
 </div>
 <script type="text/javascript">
 $(document).ready(function() {
-  $('#empezarBtn').click(function(){
+  $('.btnFormulario').click(function(){
     $('.contenedor-datos').css('opacity','0');
-    var btn = $('#empezarBtn').val();
-    var cod = '<?php echo $cod;?>'
-    var name = '<?php echo $name;?>'
+    var btn = $('.btnFormulario').val();
+    var dni = $('.inputForm').val();
 
     $(".contenedor-datos").fadeOut(500,function(){
       $.ajax({
-        url:'models/selectHorario.php',
+        url:'models/reglas.php',
         type:'POST',
-        data:{btn,cod,name},
+        data: {dni:dni},
         datatype:'html',
         success:function(datahtml){
-          $('body').css("background-image","url('app/images/background_madrenatura3.png')");
+          $('body').css("background-image","url('app/images/background_madrenatura2.png')");
           $('body').css('background-size','cover');
           //document.getElementById("backgroundImage").style.backgroundImage = "url(app/images/background_madrenatura2.png)";
           /*document.getElementById("backgroundImage").style.backgroundRepeat = "no-repeat";
@@ -74,7 +47,7 @@ $(document).ready(function() {
           document.getElementById("tituloHeader").style.opacity = "0";
           setTimeout(() => {
             document.getElementById("tituloHeader").style.opacity = "1";
-            document.getElementById("tituloHeader").style.textAlign = "left";
+            document.getElementById("tituloHeader").style.textAlign = "right";
             $('.contenedor-datos').html(datahtml);
           }, 500)
 
@@ -89,4 +62,5 @@ $(document).ready(function() {
     });
   });
 });
+
 </script>

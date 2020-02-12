@@ -1,7 +1,7 @@
 <?php
 
-require_once '../models/user.php';
-require_once '../models/turn.php';
+require_once '../classModels/user.php';
+require_once '../classModels/turn.php';
 
 // para test
 $nombre = '';
