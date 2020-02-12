@@ -13,9 +13,17 @@ if($cod != null && $cod != ''){
     if ($userfounded[0]){
         //  send
         //  cod = ....
+        // name = ........
+
+        $name = $userfounded[0]['usuario_nombre'];
     }else {
       // send cod = null;
     }
+
+    // show name 
+
+    
+
 }
 
 ?>

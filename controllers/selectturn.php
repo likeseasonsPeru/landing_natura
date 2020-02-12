@@ -6,7 +6,7 @@ require_once '../models/turn.php';
 
 $dni = '';
 $IDturn = '';
-
+$nombre = '';
 $dni = '71327644';
 $IDturn = 'turno2';
 //$dni = $_POST['dni'];

@@ -4,6 +4,7 @@ require_once '../models/user.php';
 require_once '../models/turn.php';
 
 // para test
+$nombre = ''
 $cod = '71327644';
 //$dni = $_POST['dni'];
 
@@ -53,6 +54,7 @@ if($cod != null && $cod != ''){
 
   // id del turno
   // cod
+  // nombre 
 
 }
 
