@@ -22,9 +22,11 @@
         </div>
         <div class="col-12 col-sm-12 col-md-12 offset-md-0 col-lg-6 offset-lg-3 col-xl-6 offset-xl-3 posFormIngreso">
           <form class="formDNI" method="post">
-            <input class="inputForm" placeholder="Ingrese su DNI o Código de Consult." type="text" name="dni" maxlength="8">
-
-            <div class="col-12 espaceBtnForm np">
+            <input id="dni" class="inputForm" type="text" name="dni" maxlength="8">
+            <p id="errorDNI" class="errorStyle">
+              Debe ingresar su DNI o su Código de consultora
+            </p>
+            <div class="col-12 espaceBtnForm np text-center">
               <button class="btnFormulario" type="button" name="button" value="1">
                 INGRESAR
               </button>
@@ -35,41 +37,3 @@
     </div>
   </div>
 </section>
-
-<script type="text/javascript">
-$(document).ready(function() {
-  $('.btnFormulario').click(function(){
-    $('.contenedor-datos').css('opacity','0');
-    var btn = $('.btnFormulario').val();
-
-    $(".contenedor-datos").fadeOut(1000,function(){
-      $.ajax({
-        url:'models/reglas.php',
-        type:'POST',
-        data:{btn:btn},
-        datatype:'html',
-        success:function(datahtml){
-          $('.contenedor-datos').html(datahtml);
-          changeBackground();
-        },error: function(){
-          $('.contenedor-datos').html('<p>error al cargar desde Ajax</p>');
-        }
-      });
-    });
-    $( ".contenedor-datos" ).fadeIn(500, function() {
-      $('.contenedor-datos').css('opacity','1');
-    });
-  });
-});
-
-  function changeBackground(){
-    setTimeout(() => {
-      document.getElementById("backgroundImage").style.backgroundImage = "url('app/images/background_madrenatura2.png')";
-      document.getElementById("tituloHeader").style.opacity = "0";
-      setTimeout(() => {
-        document.getElementById("tituloHeader").style.opacity = "1";
-        document.getElementById("tituloHeader").style.textAlign = "right";
-      }, 500)
-    }, 1000)
-  }
-</script>
