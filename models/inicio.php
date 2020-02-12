@@ -1,3 +1,5 @@
+
+
 <div class="fondoForms col-12 np">
   <div class="col-12 text-center topTitle np">
     <h1>
@@ -14,7 +16,6 @@
   <div class="col-12 col-sm-12 col-md-12 offset-md-0 col-lg-6 offset-lg-3 col-xl-6 offset-xl-3 posFormIngreso">
     <form class="formDNI" method="post">
       <input class="inputForm" placeholder="Ingrese su DNI o Código de Consult." type="text" name="dni" maxlength="8">
-
       <div class="col-12 espaceBtnForm np text-center">
         <button class="btnFormulario" type="button" name="button" value="1">
           INGRESAR
@@ -28,12 +29,13 @@ $(document).ready(function() {
   $('.btnFormulario').click(function(){
     $('.contenedor-datos').css('opacity','0');
     var btn = $('.btnFormulario').val();
+    var dni = $('.inputForm').val();
 
     $(".contenedor-datos").fadeOut(500,function(){
       $.ajax({
         url:'models/reglas.php',
         type:'POST',
-        data:{btn:btn},
+        data: {dni:dni},
         datatype:'html',
         success:function(datahtml){
           $('body').css("background-image","url('app/images/background_madrenatura2.png')");
