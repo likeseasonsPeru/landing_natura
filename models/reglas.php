@@ -1,7 +1,31 @@
+
+<?php
+
+require_once '../classModels/user.php';
+
+
+$btn= '';
+$dni= '';
+$name= '';
+
+$cod = $_POST['dni'];
+
+  if($cod != null && $cod != ''){
+    $user = new User();
+    $userfounded = $user->getByOrBy('usuario_dni', 'usuario_cod_cn',$cod);
+    if ($userfounded[0]){
+       $name = $userfounded[0]['usuario_nombre'];
+    }else {
+
+    }
+  }
+
+?>
+
 <div class="fondoForms col-12 np">
   <div class="col-12 text-center topTitle np">
     <h1>
-      Bienvenido (a) {{NOMBRE}}, ten en cuenta los siguientes puntos antes de continuar
+      Bienvenido (a) <?php echo $name;?>, ten en cuenta los siguientes puntos antes de continuar
     </h1>
     <div class="col-12 col-md-8 offset-md-2 np">
       <p class="textoRegistro">
@@ -31,12 +55,14 @@ $(document).ready(function() {
   $('#empezarBtn').click(function(){
     $('.contenedor-datos').css('opacity','0');
     var btn = $('#empezarBtn').val();
+    var cod = '<?php echo $cod;?>'
+    var name = '<?php echo $name;?>'
 
     $(".contenedor-datos").fadeOut(500,function(){
       $.ajax({
         url:'models/selectHorario.php',
         type:'POST',
-        data:{btn:btn},
+        data:{btn,cod,name},
         datatype:'html',
         success:function(datahtml){
           $('body').css("background-image","url('app/images/background_madrenatura3.png')");

@@ -1,3 +1,24 @@
+
+
+<?php
+
+require_once '../classModels/user.php';
+require_once '../classModels/turn.php';
+
+$name = '';
+$cod = '';
+$turnid = '';
+$btn = $_POST['btn'];
+
+if($btn != null && $btn != ''){
+  $cod = $_POST['cod'];
+  $name = $_POST['name'];
+  $turnid = $_POST['turnid'];
+}
+
+?>
+
+
 <div class="fondoForms col-12 np">
   <div class="col-12 text-center topTitle">
     <div class="col-12 col-md-8 offset-md-2">
@@ -28,16 +49,18 @@
 <script type="text/javascript">
 $(document).ready(function() {
   $('#btnSendEmail').click(function(){
-
     var email = $('#email').val();
     if(email){
+      var cod = '<?php echo $cod;?>'
+      var name = '<?php echo $name;?>'
+      var turnid = '<?php echo $turnid;?>';
       $('.contenedor-datos').css('opacity','0');
       $('#errorEmail').css('opacity','0');
       $(".contenedor-datos").fadeOut(500,function(){
         $.ajax({
           url:'models/gracias.php',
           type:'POST',
-          data:{email:email},
+          data:{cod,name,turnid,email},
           datatype:'html',
           success:function(datahtml){
             $('body').css("background-image","url('app/images/background_madrenatura5.png')");
