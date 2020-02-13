@@ -22,8 +22,6 @@ if($cod != null && $cod != '' && $email!= null && $email != '' && $turnid != nul
     $userfounded = $user->getByOrBy('usuario_dni', 'usuario_cod_cn',$cod);
     $turnfounded = $turn->getBy('turno_id', $turnid);
 
-
-
     if ($userfounded != null && $turnfounded != null){
 
         $horario = explode('-',$turnfounded[0]['turno_horario']);

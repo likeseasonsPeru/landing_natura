@@ -1,0 +1,8 @@
+.errorDatos{
+  color: red;
+  font-size: 16px;
+  opacity: 0;
+  transition: 0.4s all;
+  margin-top: 20px;
+  font-weight: 600;
+}
