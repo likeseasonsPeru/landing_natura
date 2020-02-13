@@ -3,22 +3,10 @@
 
 require_once '../classModels/user.php';
 
-
-$btn= '';
 $dni= '';
 $name= '';
-
 $cod = $_POST['dni'];
-
-  if($cod != null && $cod != ''){
-    $user = new User();
-    $userfounded = $user->getByOrBy('usuario_dni', 'usuario_cod_cn',$cod);
-    if ($userfounded[0]){
-       $name = $userfounded[0]['usuario_nombre'];
-    }else {
-
-    }
-  }
+$name = $_POST['name'];
 
 ?>
 
@@ -84,9 +72,30 @@ $(document).ready(function() {
         }
       });
     });
-    $( ".contenedor-datos" ).fadeIn(500, function() {
+    $( ".contenedor-datos" ).fadeIn(1500, function() {
       $('.contenedor-datos').css('opacity','1');
     });
   });
+
+  $('#cancelarBtn').click(function (){
+        $.ajax({
+        url:'models/inicio.php',
+        type:'POST',
+        data:{name:name},
+        datatype:'html',
+        success:function(datahtml){
+          $('body').css("background-image","url('app/images/background_madrenatura1.png')");
+          $('body').css('background-size','cover');
+          document.getElementById("tituloHeader").style.opacity = "0";
+          setTimeout(() => {
+            document.getElementById("tituloHeader").style.opacity = "1";
+            document.getElementById("tituloHeader").style.textAlign = "left";
+            $('.contenedor-datos').html(datahtml);
+          }, 500)
+        },error: function(){
+          $('.contenedor-datos').html('<p>error al cargar desde Ajax</p>');
+        }
+      });
+    });
 });
 </script>

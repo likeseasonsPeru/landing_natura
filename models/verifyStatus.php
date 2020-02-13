@@ -7,7 +7,11 @@ if($cod != null && $cod != ''){
     $userfounded = $user->getByOrBy('usuario_dni', 'usuario_cod_cn',$cod);
     if ($userfounded[0]){
         $name = $userfounded[0]['usuario_nombre'];
-        echo 'encontrado';
+        if ($userfounded[0]['usuario_registered'] == 1){
+          echo 'Registrado';
+        }else {
+          echo $name;
+        }
     }else {
       echo ' ';
     }

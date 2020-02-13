@@ -24,23 +24,30 @@ $(document).ready(function () {
       $('#errorDNI').css('opacity', '1');
     } else {
         $.ajax({
-          url: 'controllers/verifyStatus.php',
+          url: 'models/verifyStatus.php',
           type: 'POST',
           data: {dni: dni},
           success: function (response) {
-            var res = response.trim();
-            console.log(res);
-            if (res == '') {
+            if (response.trim() == '') {
               // PINTAR UN MODAL
+              $('#titlemodal').text('El DNI o codigo que ingreso no se encuentra en la lista');
+              $('#modal').modal('show');
               console.log('usuario fallido');
-            } else {
+            }else if (response.trim() == 'Registrado'){
+              // pintar otro modal
+              $('#titlemodal').text('Ya hay un turno seleccionado con este DNI o codigo');
+              $('#modal').modal('show');
+              console.log(response.trim());
+            }
+            else {
               $('.contenedor-datos').css('opacity', '0');
               $('#errorDNI').css('opacity', '0');
               $(".contenedor-datos").fadeOut(500, function () {
+                var name = response.trim()
                 $.ajax({
                   url: 'models/reglas.php',
                   type: 'POST',
-                  data: { dni: dni },
+                  data: {dni, name},
                   datatype: 'html',
                   success: function (datahtml) {
                     $('body').css("background-image", "url('app/images/background_madrenatura2.png')");

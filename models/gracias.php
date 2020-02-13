@@ -8,6 +8,8 @@ $cod = '';
 $email = '';
 $turnid = '';
 $name = '';
+$horario = '';
+$fecha = '';
 
 $name = $_POST['name'];
 $email = $_POST['email'];
@@ -20,8 +22,12 @@ if($cod != null && $cod != '' && $email!= null && $email != '' && $turnid != nul
     $userfounded = $user->getByOrBy('usuario_dni', 'usuario_cod_cn',$cod);
     $turnfounded = $turn->getBy('turno_id', $turnid);
 
+
+
     if ($userfounded != null && $turnfounded != null){
 
+        $horario = explode('-',$turnfounded[0]['turno_horario']);
+        $fecha = $turnfounded[0]['turno_fecha'];
         // update user fields ()
         $user->updateBy('usuario_registered', 1, "usuario_dni", $userfounded[0]['usuario_dni']);  // cambiar 
         $user->updateBy('usuario_email', $email, "usuario_dni", $userfounded[0]['usuario_dni']);  // cambiar
@@ -47,8 +53,8 @@ if($cod != null && $cod != '' && $email!= null && $email != '' && $turnid != nul
     </h1>
     <div class="col-12 col-md-8 offset-md-2 text-center">
       <p class="textoRegistro">
-        El correo con los detalles del evento fué enviado con éxito.Te esperamos el  {{xx/xx/xx}} a las xx en
-“dirección del evento”.
+        El correo con los detalles del evento fué enviado con éxito.Te esperamos el  <?php echo $fecha?> a las <?php echo $horario[0]?> en
+  “dirección del evento”.
       </p>
     </div>
     <!--div class="lineHeader">

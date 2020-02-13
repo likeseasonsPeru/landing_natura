@@ -5,7 +5,7 @@ define("SLASH", "/");
 define("SLASH_SUP", "../");
 
 /*Database Configuration*/
-define("HOST", "likeseasons.com");
+define("HOST", "vivenaturamadres.net.pe");
 define("DB", "eigbitco_natura");
 define("USER", "eigbitco_natura");
 define("PASS", 'M@:v3r!cK');

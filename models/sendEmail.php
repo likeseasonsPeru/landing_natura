@@ -78,7 +78,7 @@ $(document).ready(function() {
           }
         });
       });
-      $( ".contenedor-datos" ).fadeIn(500, function() {
+      $( ".contenedor-datos" ).fadeIn(2500, function() {
         $('.contenedor-datos').css('opacity','1');
       });
     }else{
