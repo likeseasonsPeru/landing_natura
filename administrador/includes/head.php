@@ -12,7 +12,7 @@
     <meta name="description" content="">
 
     <!-- WEBSITE TITLE -->
-    <title>LA MURALLA INMOBILIARIAS | GESTOR DE LEADS</title>
+    <title>VIVENATURAMADRES</title>
 
     <!-- FAVICON [WEB & APPLE] -->
     <link type="image/x-icon" href="favicon.ico" rel="icon">

@@ -5,10 +5,11 @@ include 'includes/head.php';
 $host=DB_HOST; $base=DB_NAME; $user=DB_USER; $pass=DB_PASS;
 
 if (isset($_GET['pageno'])) {
-            $page = $_GET['pageno'];
-        } else {
-            $page = 1;
-        }
+   $page = $_GET['pageno'];
+} else {
+  $page = 1;
+}
+
 $numPorPagina = 50;
 $offset = ($page-1) * $numPorPagina;
 
@@ -19,7 +20,7 @@ if (mysqli_connect_errno()){
     die();
 }
 
-$total_pages_sql = "SELECT COUNT(*) FROM tabla_leadsferia";
+$total_pages_sql = "SELECT COUNT(*) FROM usuarios WHERE usuario_registered != '0'";
 $resultTotal = mysqli_query($conn,$total_pages_sql);
 $total_rows = mysqli_fetch_array($resultTotal)[0];
 $total_pages = ceil($total_rows / $numPorPagina);
@@ -30,48 +31,36 @@ $conn = new mysqli($host, $user, $pass, $base);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-if ($conn2->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
 
-$result = $conn->query("SELECT * FROM tabla_leadsferia ORDER BY email_id DESC LIMIT $offset,$numPorPagina");
+$result = $conn->query("SELECT * FROM usuarios, turnos WHERE usuario_turnoID = turno_id AND usuario_registered = 1 ORDER BY usuario_dni DESC LIMIT $offset,$numPorPagina ");
 $conn->set_charset("utf8");
 $charset = $conn->character_set_name();
-
-
-
+$datosTabla = '';
 //printf ("El juego de caracteres en uso es %s\n", $charset);
 if ($result->num_rows > 0) {
 // output data of each row
 $contador = $offset;
 while($row = $result->fetch_assoc()){
   $contador++;
-  $id =  $row['email_id'];
-  $proyecto = utf8_encode($row['proyecto']);
-  $nombres = utf8_encode($row['nombres']);
-  $apellidos = utf8_encode($row['apellidos']);
-  $celular = (string)$row['celular'];
-  $correo = utf8_encode($row['correo']);
-  $distrito= utf8_encode($row['distrito']);
-  $fecha_lead= (string)$row['fecha_solicitud'];
+  $dni = $row['usuario_dni'];
+  $nombres = $row['usuario_nombre'];
+  $gerencia = $row['usuario_gerencia'];
+  $sector = $row['usuario_sector'];
+  $nivel = $row['usuario_nivel'];
+  $codigo_cn = $row['usuario_cod_cn'];
 
   $datosTabla .= "<tr>";
-  $datosTabla .= "<td>".$contador."</td>";
-  $datosTabla .= "<td>".$proyecto."</td>";
+  $datosTabla .= "<td>".$dni."</td>";
   $datosTabla .= "<td>".$nombres."</td>";
-  $datosTabla .= "<td>".$apellidos."</td>";
-  $datosTabla .= "<td>".$celular."</td>";
-  $datosTabla .= "<td>".$correo."</td>";
-  $datosTabla .= "<td>".$distrito."</td>";
-  $datosTabla .= "<td>".$fecha_lead."</td>";
+  $datosTabla .= "<td>".$gerencia."</td>";
+  $datosTabla .= "<td>".$sector."</td>";
+  $datosTabla .= "<td>".$codigo_cn."</td>";
+  $datosTabla .= "<td>".$nivel."</td>";
   $datosTabla .= "</tr>";
-
   }
 }else {
     echo "0 results";
 }
-
-
  ?>
  <body class="bg-light">
  <header>
@@ -83,35 +72,48 @@ while($row = $result->fetch_assoc()){
        <div class="text-right col-12">
          <a class="btn btn-danger" href="index.php">Cerrar Sesión</a>
        </div>
-       <div class="col-6">
-          <a class="btn btn-warning" href="leads.php">Leads Web</a>
-          <a class="btn btn-warning" href="leads_feria.php">Leads de Feria</a>
-       </div>
-       <div class="col-6 text-center">
-          <a class="btn btn-success" href="exportar.php">Exportar Leads!</a>
-       </div>
      </div>
-     <div class="row">
+
+     <div class="row text-center">
+
+     <label for="forasistencia" class="col-1 col-form-label">Estado</label>
+      <select class='col-2 form-control' id="estado" name="estadolist"">
+        <option value="1">Registrados</option>
+        <option value="2">Asistentes</option>
+      </select>
+
+      <label for="forturno" class="col-1 col-form-label">Turno </label>
+      <select class='col-2 form-control' id="turno" name="turnolist"">
+        <option value="turno1">Turno 1</option>
+        <option value="turno2">Turno 2</option>
+        <option value="turno3">Turno 3</option>
+      </select>
+
+        <div class="col-2 ">
+           <btn id= 'filtrar' class="btn btn-primary" href="usuarios.php">Filtrar</btn>
+        </div>
+
+        <div class="col-3 mb-3">
+           <a class="btn btn-success" href="usuarios.php">Total</a>
+        </div>
+      
+
          <div class="col-md-12">
-             <h2 class="p-2">Número total de Leads: <?= $total_rows; ?></h2>
+             <h2 class="p-2">Número total de usuarios: <?= $total_rows; ?></h2>
 
  					<div id="muestraDatos">
              <table class="table table-bordered table-hover" id='tabla'>
  							<div class="col-xs-12 text-center">
- 								<h1>
- 									LEADS DE FERIA EXPOURBANIA
- 								</h1>
+
  							</div>
                  <thead>
                      <tr>
- 											  <th scope="col">#</th>
-                         <th scope="col">Proyecto</th>
+                         <th scope="col">DNI</th>
                          <th scope="col">Nombres</th>
-                         <th scope="col">Apellidos</th>
- 												<th scope="col">Celular</th>
-                         <th scope="col">Correo</th>
-                         <th scope="col">Distrito</th>
-                          <th scope="col">Fecha del Lead</th>
+                         <th scope="col">Gerencia</th>
+ 												 <th scope="col">Sector</th>
+                         <th scope="col">Codigo_cn</th>
+                         <th scope="col">Nivel</th>
                      </tr>
                  </thead>
  								<tbody>
@@ -144,14 +146,33 @@ while($row = $result->fetch_assoc()){
  </div>
 
  <script>
-     var id_modelo = 0;
-     var precio_dolares = 0;
-     var precio_anio = 2017;
+  $(document).ready(function() {
+    var estado = '1', turno= 'turno1';
+    $('select#estado').on('change',function(){
+       estado = $(this).val();
+    });
 
-     $('#btnLogOut').click( function(){
-             window.location.href = "index.php";
-     });
+    $('select#turno').on('change',function(){
+        turno = $(this).val();
+    });
 
+    $('#filtrar').click(function(){
+        $.ajax({
+          url:'usuarios_filtro.php',
+          type:'POST',
+          data:{estado, turno},
+          datatype:'html',
+          success:function(datahtml){
+            $('#muestraDatos').html(datahtml);
+          },error: function(){
+            $('#muestraDatos').html('<p>error al cargar desde Ajax</p>');
+          }
+        });
+      $( "#muestraDatos" ).fadeIn(500, function() {
+        $('#muestraDatos').css('opacity','1');
+      });
+    });
+  });
 
  </script>
  </body>

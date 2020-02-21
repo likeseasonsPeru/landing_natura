@@ -133,7 +133,7 @@ if($tipoformulario == 'todos'){
 <div class="container mt-4 p-4 bg-white">
     <div class="row">
       <div class="col-xs-12 col-sm-10 col-md-10">
-        <a class="btn btn-primary" style="margin-top:20px; margin-bottom:20px;" href="leads.php"> <- Regresar </a>
+        <a class="btn btn-primary" style="margin-top:20px; margin-bottom:20px;" href="usuarios.php"> <- Regresar </a>
         <form  method="post">
           <div class="espaciadoexportar col-xs-12 col-sm-12 col-md-12 text-left" style="margin-top:30px;">
             <label for="">Seleccione Tipo de Reporte:</label>

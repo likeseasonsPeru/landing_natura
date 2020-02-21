@@ -55,7 +55,7 @@ include 'includes/head.php';
          }else{
            if(usuario =='admin_natura' && pass == 'natura_2020%'){
              $('.errorDatos').css('opacity',0);
-             window.location.href = "leads.php";
+             window.location.href = "usuarios.php";
            }else{
              $('.errorDatos').css('opacity',1);
            }
