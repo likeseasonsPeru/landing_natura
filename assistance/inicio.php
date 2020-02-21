@@ -110,7 +110,7 @@ $(document).ready(function () {
               $(".contenedor-datos").fadeOut(500, function () {
                 var name = response.trim()
                 $.ajax({
-                  url: 'assistance/Assistance.php',
+                  url: 'assistance/assistance.php',
                   type: 'POST',
                   data: {dni, name},
                   datatype: 'html',
